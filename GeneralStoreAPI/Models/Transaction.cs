@@ -18,7 +18,13 @@ namespace GeneralStoreAPI.Models
         [ForeignKey(nameof(CustomerId))]
         public virtual Customer Customer { get; set; }
         public DateTime DateOfTransaction { get; set; }
-        public double TotalCost => Product.Price * ProductCount;
+        public double TotalCost
+        {
+            get
+            {
+            return Product!=null ? Product.Price * ProductCount:0;
+            }
+        }
         public int ProductCount { get; set; }
     }
 }
